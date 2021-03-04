@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Galerie">
+
+
+	<!-- Mobile Stuff -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+	<title>Gongyo</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic'
+		rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="look.css">
+	<link rel="stylesheet" href="color.css">
+	<link rel="script" href="colorise.js">
+
+
+
+
+
+	<script>
+		document.addEventListener("DOMContentLoaded", colorise);
+
+		/*
+		const styleSheets = Array.from(document.styleSheets).filter(
+			(styleSheet) => !styleSheet.href || styleSheet.href.startsWith(window.location.origin)
+		);
+		for (let style of styleSheets) {
+		if (style instanceof CSSStyleSheet && style.cssRules) {
+			...
+		}
+		}*/
+
+		function colorise() {
+			var colors = {
+				'ni-ji': 'rgb(175, 25, 25)',
+				'sa': '',
+				'a': 'yellow',
+				'i': 'red',
+				'e': 'red',
+			}
+
+			function findColorTags() {
+				var colors = []
+				const styleSheets = window.document.styleSheets;
+				const styleSheetsLength = styleSheets.length;
+				for (var i = 0; i < styleSheetsLength; i++) {
+					const styleSheet = styleSheets[i]
+					if (!styleSheet.href.endsWith('color.css')) continue;
+					var rules
+					try {
+						rules = styleSheet.rules || styleSheet.cssRules;
+					} catch (err) {
+						continue;
+					}
+					if (!rules) continue;
+
+					for (let ruleId in rules) {
+						const rule = rules[ruleId]
+						const tag = rule.selectorText
+						if (!tag) continue;
+						const head = 'span.'
+						if (tag.startsWith(head)) {
+							colors.push(tag.substr(head.length))
+						}
+					}
+
+					return colors.sort(
+						function (a, b) {
+							return a.length - b.length // || a.localeCompare(b)
+						}
+					);
+				}
+			}
+
+			colors = findColorTags()
+
+			var lines = document.getElementsByClassName('sutra')
+			for (i_lines = lines.length - 1; i_lines >= 0; i_lines--) {
+				var line = document.getElementsByClassName('sutra')[i_lines]
+				var text = line.innerHTML
+				text = text.toLowerCase()
+
+				for (var i = 0; i < text.length; i++) {
+					for (const tag of colors) {
+						if (tag === text.substr(i, tag.length)
+							.replace('é', 'e')
+							.replace('è', 'e')
+							.replace('ï', 'i')
+						) {
+							const tagHead = '<span class="' + tag + '">'
+							const tagTail = '</span>'
+							var head = text.substr(0, i)
+							var word = text.substr(i, tag.length)
+							var tail = text.substr(i + tag.length)
+
+							text = head + tagHead + word + tagTail + tail
+							i += tagHead.length + word.length + tagTail.length
+							break
+						}
+					}
+				}
+				/*
+				for(var tag in colors) {
+					tag = tag.replace(/_/g, '-')
+	
+					function addTag(tag, text) {
+						var c = text.lastIndexOf(tag)
+						if(c >=0 ){
+							var head = text.substr(0, c)
+							var word = text.substr(c,tag.length)
+							var tail = text.substr(c+tag.length)
+	
+							head = addTag(tag, head)
+	
+							text = head + '<span class='+tag+'>' + word + '</span>' + tail 
+						}
+						return text
+					};
+					text = addTag(tag, text)
+				}*/
+
+				text = text.replace(/\./g, ' </P><P> ')
+
+				line.innerHTML = text
+			}
+
+		};		
+	</script>
+
+</head>
+
+<body>
+	<button onclick="colorise()">color</button>
+
+	<header>
+		<h1>Namyo</h1>
+	</header>
+	<main>
+		<section>
+			<!--
+				<P class='sutra'>
+					Ni-ji sé-sonn. </P>
+				-->
+			<article>
+				<H2>
+					<P class='sutra'>
+						Myo-ho rèn-gué kyo. Ho-bèn Pon. Daï ni.
+					</P>
+				</H2>
+				<P class='sutra'>
+					Ni-ji sé-sonn. Jou sann-maï. Ann-jo ni ki. Go Chari-hotsou. Cho bout tchi-é. Jinn-jinn mou-ryo. Go
+					tchi-é monn. Nann-gué nann-nyou. Is saï cho- monn. Hyakou-chi-boutsou. Cho fou no tchi. Cho-i cha
+					ga. Boutsou zo chinn gonn. Hyakou sèn mann nokou. Mou-chou cho boutsou. Jinn ghyo cho boutsou.
+					Mou-ryo do ho. You-myo cho- Jinn. Myo-cho fou monn. Jo-jou jinn-jinn. Mi-zo-ou ho. Zouï ghi cho
+					sétsou. I-chou nann-gué. Chari-hotsou. Go jou jo- boutsou i raï. Chou-jou hi-you. Ko-èn gonn-kyo.
+					Mou-chou ho-bèn. Inn-do chou-jo. Ryo ri cho jakou. Cho-i cha ga. Nyo-raï ho-bèn. Tchi kèn
+					hara-mitsou. Kaï i gou-sokou. Chari-hotsou. Nyo-raï tchi-kèn. Ko daï jinn-nonn. Mou-ryo mou-gué.
+					Riki. Mou-chou-i. zèn-jo. Gué-das sann-maï. Jinn-nyou mou-saï. Jo-jou is saï. Mi-zo-ou ho.
+					Chari-hotsou. Nyo-raï no. Chou-jou foun bétsou. Ghyo sés cho ho. Gonn ji nyou-nann. Ek ka
+					chou-chinn. Chari-hotsou. Chou yo gonn chi. Mou-ryo mou-hèn. Mi-zo-ou ho. Bous chitsou jo-jou. Chi
+					Chari-hotsou. Fou chou bou sétsou. Cho-i cha ga. Bous cho jo-jou. Daï itchi ké-ou. Nann-gué chi ho.
+					Youï boutsou yo boutsou. Naï no kou-jinn. Cho-ho jis so.
+				</P>
+			</article>
+
+			<article>
+				<P class='sutra'>
+					Cho-i cho-ho. Nyo zé so. Nyo zé cho. Nyo zé taï. Nyo zé riki. Nyo zé sa. Nyo zé inn. Nyo zé èn. Nyo
+					zé ka. Nyo zé ho. Nyo zé honn-mak kou-kyo to.
+				</P>
+			</article>
+
+			<article>
+				<H2>
+					<P class='sutra'>
+						Myo-ho rèn-gué kyo. Nyo-raï jou-ryo honn. Daï jou-rokou.
+					</P>
+				</H2>
+				<P class='sutra'>
+					Ji ga tokou bour raï. Cho kyo cho kos chou. Mou-ryo hyakou sén mann. Okou saï a-so-ghi. Jo sép po
+					kyo-ké. Mou-chou okou chou-jo. Ryo nyou o boutsou-do. Ni-raï mou-ryo ko. I do chou-jo ko. Ho-bèn
+					guèn né-hann. Ni jitsou fou métsou-do. Jo jou chi sép po. Go jo jou o chi. I cho jinn-zou-riki. Ryo
+					tèn-do chou-jo. Souï gonn ni fou kèn. Chou kèn ga métsou-do. Ko kou-yo cha-ri. Guèn kaï é rèn-bo. Ni
+					cho katsou-go chinn. Chou-jo ki chinn-boukou. Chitchi-jiki-i nyou-nann. Is chinn yok kèn boutsou.
+					Fou ji chakou chinn-myo. Ji ga ghyou chou so. Kou choutsou ryo-jou-sèn. Ga ji go chou-jo. Jo zaï chi
+					fou-métsou. I ho-bèn rik ko. Guèn ou métsou fou métsou. Yo-kokou ou chou-jo. Kou-ghyo chinn-ghyo
+					cha. Ga bou o hi tchou. I sétsou mou-jo ho. Nyo to fou monn chi. Tann ni ga métsou-do. Ga kèn cho
+					chou-jo. Motsou-zaï o kou-kaï. Ko fou i guèn-chinn. Ryo go cho katsou go. Inn go chinn rèn-bo. Naï
+					choutsou i sép po. Jinn-zou-riki nyo zé. O a-so-ghi ko. Jo zaï ryo-jou-sèn. Ghyou yo cho jou-cho.
+					Chou-jo kèn ko jinn. Daï ka cho cho ji. Ga chi do ann-nonn. Tèn-ninn jo jou-mann. Onn-rinn cho
+					do-kakou. Chou-jou ho cho-gonn. Ho-jou ta kè-ka. Chou-jo cho you-rakou. Cho tèn ghyakou tèn-kou. Ou
+					mann-da-ra-ké. Sann boutsou ghyou daï-chou. Ga jo-do fou ki. Ni chou kèn cho jinn. Ou-fou cho
+					kou-no. Nyo zé chitsou jou-mann. Zé cho zaï chou-jo. I akou-go inn-nèn. Ka a-so-ghi ko. Fou monn
+					sann-bo myo. Cho ou chou kou-dokou. Nyou-houa chitchi-jiki cha. Sok kaï kèn ga chinn. Zaï chi ni sép
+					po. Houakou-ji i chi chou. Sétsou boutsou-jou mou-ryo. Kou nai kèn bous cha. I Sétsou boutsou nann
+					tchi. Ga tchi-riki nyo zé. E-ko cho mou-ryo. Jou-myo mou-chou ko. Kou chou-go cho tokou. Nyo-to ou
+					tchi cha. mot to chi cho ghi. To dann ryo yo jinn. Boutsou-go jip pou-ko. Nyo i zèn ho-bèn. I ji
+					o-chi ko. Jitsou zaï ni gonn chi. Mou no sék ko-mo. Ga yakou i sé bou. Kou cho kou-guèn cha. I
+					bonn-bou tèn-do. Jitsou zaï ni gonn métsou. I jo kèn ga ko. Ni cho kyo-chi chinn. Ho-itsou jakou
+					go-yokou. Da o akou-do tchou. Ga jo tchi chou-jo. Ghyo do fou ghyo do. Zouï o cho ka do. I sés
+					chou-jou ho. Maï ji sa zé nèn. I ga ryo chou-jo. Tokou nyou mou-jo do. Sokou jo-jou bous chinn.
+				</P>
+			</article>
+			<!---->
+		</section>
+	</main>
+	<footer> </footer>
+</body>
+
+</html>

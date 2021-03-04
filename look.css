@@ -1,0 +1,35 @@
+body{
+    padding : 0 2rem ;
+    position: relative ;
+    height : 100vh ;
+    max-width: 600px ;
+    margin : auto ;
+}
+
+body{
+    background-color: #222 ;
+    color : #DDD ;
+    font-family: "Arial";
+}
+
+h1{
+    font-size: 4rem ;
+    padding: 2rem 0;
+    color: #EEE ;
+}
+
+h2 {
+    font-size: 3rem ;
+    padding: 2rem 0;
+}
+
+
+article{
+    padding-bottom: 2rem;
+    font-size: 1rem ;
+
+}
+
+span.niji{
+    background-color: brown;
+}
