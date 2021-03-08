@@ -1,136 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Galerie">
 
-
-	<!-- Mobile Stuff -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Mobile Stuff -- >
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-
+-->
 	<title>Gongyo</title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic'
 		rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="reset.css">
+		
+
 	<link rel="stylesheet" href="look.css">
 	<link rel="stylesheet" href="color.css">
-	<link rel="script" href="colorise.js">
 
-
-
-
-
-	<script>
-		document.addEventListener("DOMContentLoaded", colorise);
-
-		/*
-		const styleSheets = Array.from(document.styleSheets).filter(
-			(styleSheet) => !styleSheet.href || styleSheet.href.startsWith(window.location.origin)
-		);
-		for (let style of styleSheets) {
-		if (style instanceof CSSStyleSheet && style.cssRules) {
-			...
-		}
-		}*/
-
-		function colorise() {
-			var colors = {
-				'ni-ji': 'rgb(175, 25, 25)',
-				'sa': '',
-				'a': 'yellow',
-				'i': 'red',
-				'e': 'red',
-			}
-
-			function findColorTags() {
-				var colors = []
-				const styleSheets = window.document.styleSheets;
-				const styleSheetsLength = styleSheets.length;
-				for (var i = 0; i < styleSheetsLength; i++) {
-					const styleSheet = styleSheets[i]
-					if (!styleSheet.href.endsWith('color.css')) continue;
-					var rules
-					try {
-						rules = styleSheet.rules || styleSheet.cssRules;
-					} catch (err) {
-						continue;
-					}
-					if (!rules) continue;
-
-					for (let ruleId in rules) {
-						const rule = rules[ruleId]
-						const tag = rule.selectorText
-						if (!tag) continue;
-						const head = 'span.'
-						if (tag.startsWith(head)) {
-							colors.push(tag.substr(head.length))
-						}
-					}
-
-					return colors.sort(
-						function (a, b) {
-							return a.length - b.length // || a.localeCompare(b)
-						}
-					);
-				}
-			}
-
-			colors = findColorTags()
-
-			var lines = document.getElementsByClassName('sutra')
-			for (i_lines = lines.length - 1; i_lines >= 0; i_lines--) {
-				var line = document.getElementsByClassName('sutra')[i_lines]
-				var text = line.innerHTML
-				text = text.toLowerCase()
-
-				for (var i = 0; i < text.length; i++) {
-					for (const tag of colors) {
-						if (tag === text.substr(i, tag.length)
-							.replace('é', 'e')
-							.replace('è', 'e')
-							.replace('ï', 'i')
-						) {
-							const tagHead = '<span class="' + tag + '">'
-							const tagTail = '</span>'
-							var head = text.substr(0, i)
-							var word = text.substr(i, tag.length)
-							var tail = text.substr(i + tag.length)
-
-							text = head + tagHead + word + tagTail + tail
-							i += tagHead.length + word.length + tagTail.length
-							break
-						}
-					}
-				}
-				/*
-				for(var tag in colors) {
-					tag = tag.replace(/_/g, '-')
-	
-					function addTag(tag, text) {
-						var c = text.lastIndexOf(tag)
-						if(c >=0 ){
-							var head = text.substr(0, c)
-							var word = text.substr(c,tag.length)
-							var tail = text.substr(c+tag.length)
-	
-							head = addTag(tag, head)
-	
-							text = head + '<span class='+tag+'>' + word + '</span>' + tail 
-						}
-						return text
-					};
-					text = addTag(tag, text)
-				}*/
-
-				text = text.replace(/\./g, ' </P><P> ')
-
-				line.innerHTML = text
-			}
-
-		};		
-	</script>
+	<script type = "text/javascript" src="colorise.js"></script>  
 
 </head>
 
