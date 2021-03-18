@@ -18,29 +18,34 @@ body{
     font-size: 6vw /* clamp(1rem, 6vw, 100rem);*/
 }
 
-h1{
+h1 {
     /*font-size: 4rem ;
     padding: 2rem 0;*/
     color: rgb(99, 99, 99) ;
-    line-height: 0.5;
+    line-height: 1;
+    padding: 2rem 1rem;
+    font-weight: bold;
 }
 
-h2 {
-    line-height: 0.3;
+article h2 {
+    line-height: 1;
     color: rgb(128, 128, 128) ;
-
-    /*font-size: 3rem ;
-    padding: 2rem 0;*/
+    padding-bottom: 0rem;
+    font-weight: bold;
+    font-style: italic;
 }
-
-
-article{
-    line-height: 0.2;
+article {
+    line-height: 1;
     padding: 5px;
     margin: 5px;
+    padding: 1rem 1rem;
     /*border: 1px solid rgb(145, 145, 145);*/
 
     /*padding-bottom: 2rem;
     font-size: 1rem ;*/
 
+}
+
+article p {
+    padding-bottom: 2rem;
 }

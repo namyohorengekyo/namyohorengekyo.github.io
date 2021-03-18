@@ -82,7 +82,9 @@ function colorise() {
             }
         }
 
-        text = text.replace(/\./g, ' </P><P> ')
+        text = '<P>' + text + '</P>'
+        text = text.replace(/\.\./g, ' </P> <P> ')
+        text = text.replace(/\./g, ' <BR/> ')
 
         line.innerHTML = text
     }
