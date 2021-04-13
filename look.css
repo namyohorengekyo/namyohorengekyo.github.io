@@ -8,14 +8,14 @@ body{
 }
 */
 body{
-    background-color: #222 ;
-    color : #DDD ;
+    background-color: rgb(255, 255, 255) ;
+    color : rgb(0, 0, 0) ;
     font-family: "Arial";
     text-justify: inter-character;
 }
 
 body{
-    font-size: 6vw; /* clamp(1rem, 6vw, 100rem);*/
+    font-size: 7vw; /* clamp(1rem, 6vw, 100rem);*/
     padding: 10px 10px;
 }
 
@@ -23,20 +23,20 @@ h1 {
     /*font-size: 4rem ;
     padding: 2rem 0;*/
     color: rgb(99, 99, 99) ;
-    line-height: 1;
+    line-height: 1.1;
     padding-bottom: 3vw;
     font-weight: bold;
 }
 
 
 article {
-    line-height: 1;
+    line-height: 1.2;
     padding: 3vw 0;
     /*border: 1px solid rgb(145, 145, 145);*/
 }
 
 article h2 {
-    line-height: 1;
+    line-height: 1.1;
     color: rgb(128, 128, 128) ;
 
     font-weight: bold;
@@ -44,5 +44,5 @@ article h2 {
 }
 
 article p {
-    padding-bottom: 3vw;
+    padding-bottom: 4vw;
 }
