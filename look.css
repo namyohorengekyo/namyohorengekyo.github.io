@@ -43,9 +43,10 @@ article h2 {
     font-style: italic;
 }
 
-namyo_x3 {
+.namyo3 {
     line-height: 1.1;
     color: rgb(128, 128, 128) ;
+    font-weight: bold;
     font-style: italic;    
 }
 
